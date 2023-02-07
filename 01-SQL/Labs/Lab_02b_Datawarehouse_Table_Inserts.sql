@@ -235,3 +235,10 @@ TODO: Write a SELECT Statement that:
 -- Validate that the Data was Inserted ----------
 -- ----------------------------------------------
 SELECT * FROM northwind_dw.fact_orders;
+
+-- 3.0 dimensional report
+SELECT last_name as customer_name
+	, SUM(quantity) AS total_quantity
+    , SUM(unit_price) AS total_unit_price
+FROM northwind_dw.dim_customers NATURAL JOIN northwind_dw.fact_orders
+GROUP BY customer_name;

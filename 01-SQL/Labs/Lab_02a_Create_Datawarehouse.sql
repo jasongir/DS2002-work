@@ -1,7 +1,7 @@
 # DROP database `northwind_dw`;
-CREATE DATABASE `Northwind_DW3` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE `Northwind_DW` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
-USE Northwind_DW3;
+USE Northwind_DW;
 
 # DROP TABLE `dim_customers`;
 CREATE TABLE `dim_customers` (
@@ -109,7 +109,6 @@ CREATE TABLE `dim_suppliers` (
 -- To keep things simple, don't include purchase order or inventory info
 -- ----------------------------------------------------------------------
 # DROP TABLE `fact_orders`;
-
 CREATE TABLE `fact_orders` (
   `fact_order_key` int NOT NULL AUTO_INCREMENT,  
   `order_key` int DEFAULT NULL,
