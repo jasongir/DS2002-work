@@ -109,4 +109,35 @@ CREATE TABLE `dim_suppliers` (
 -- To keep things simple, don't include purchase order or inventory info
 -- ----------------------------------------------------------------------
 # DROP TABLE `fact_orders`;
-CREATE TABLE `fact_orders`;
+
+CREATE TABLE `fact_orders` (
+  `fact_order_key` int NOT NULL AUTO_INCREMENT,  
+  `order_key` int DEFAULT NULL,
+  `employee_key` int DEFAULT NULL,
+  `customer_key` int DEFAULT NULL,
+  `product_key` int DEFAULT NULL,
+  `shipper_key` int DEFAULT NULL,
+  `ship_name` varchar(50) DEFAULT NULL,
+  `ship_address` longtext,
+  `ship_city` varchar(50) DEFAULT NULL,
+  `ship_state_province` varchar(50) DEFAULT NULL,
+  `ship_zip_postal_code` varchar(50) DEFAULT NULL,
+  `ship_country_region` varchar(50) DEFAULT NULL,
+  `quantity` decimal(18,4) NOT NULL DEFAULT '0.0000',
+  `order_date`  datetime DEFAULT NULL,
+  `shipped_date` datetime DEFAULT NULL,
+  `unit_price` decimal(19,4) DEFAULT '0.0000',
+  `discount` double NOT NULL DEFAULT '0',
+  `shipping_fee` decimal(19,4) DEFAULT '0.0000',
+  `taxes` decimal(19,4) DEFAULT '0.0000',
+  `payment_type` varchar(50) DEFAULT NULL,
+  `paid_date` datetime DEFAULT NULL,
+  `tax_rate` double DEFAULT '0',
+  `order_status` varchar(50) NOT NULL,
+  `order_details_status` varchar(50) NOT NULL,
+  PRIMARY KEY (`fact_order_key`),
+  CONSTRAINT fk_fact_orders_employee FOREIGN KEY (`employee_key`) REFERENCES `dim_employees`(`employee_key`),
+  CONSTRAINT fk_fact_orders_customer FOREIGN KEY (`customer_key`) REFERENCES `dim_customers`(`customer_key`),
+  CONSTRAINT fk_fact_orders_product FOREIGN KEY (`product_key`) REFERENCES `dim_products`(`product_key`),
+  CONSTRAINT fk_fact_orders_shipper FOREIGN KEY (`shipper_key`) REFERENCES `dim_shippers`(`shipper_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
