@@ -140,3 +140,37 @@ CREATE TABLE `fact_orders` (
   CONSTRAINT fk_fact_orders_product FOREIGN KEY (`product_key`) REFERENCES `dim_products`(`product_key`),
   CONSTRAINT fk_fact_orders_shipper FOREIGN KEY (`shipper_key`) REFERENCES `dim_shippers`(`shipper_key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+
+# showing work:
+
+-- use northwind;
+-- SELECT o.id as `order_key`,
+-- o.employee_id as `employee_key`,
+-- o.customer_id as `customer_key`,
+-- od.product_id as `product_key`,
+-- o.shipper_id as `shipper_key`,
+-- o.`ship_name`,
+-- o.`ship_address`,
+-- o.`ship_city`,
+-- o.`ship_state_province`,
+-- o.`ship_zip_postal_code`,
+-- o.`ship_country_region`,
+-- od.`quantity`,
+-- o.`order_date`,
+-- o.`shipped_date`,
+-- od.`unit_price`,
+-- od.`discount`,
+-- o.`shipping_fee`,
+-- o.`taxes`,
+-- o.`payment_type`,
+-- o.`paid_date`,
+-- o.`tax_rate`,
+-- os.status_name as `order_status`,
+-- ods.status_name as `order_details_status`
+-- FROM northwind.orders as o
+-- 	inner join northwind.orders_status as os
+-- 	on o.status_id = os.id
+-- 	inner join order_details as od
+-- 	on od.order_id = o.id
+-- 	inner join order_details_status as ods
+-- 	on od.status_id = ods.id;
